@@ -1,0 +1,226 @@
+﻿/* Genel Ayarlar */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f0f0;
+}
+
+body {
+  display: flex;
+  color: #2e2e35;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  background-color: #002855;
+  padding-top: 20px;
+  color: #c9d1de;
+}
+
+.sidebar a {
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #c9d1de;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Navbar - Siyah Ton */
+.navbar {
+  background-color: #111; /* Siyaha yakın koyu bir ton */
+  color: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.navbar .nav-links a {
+  margin-left: 1rem;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .nav-links a:hover {
+  color: #c9d1de;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 200px;
+  width: calc(100% - 200px);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f6fa;
+}
+
+/* Page Content */
+.page-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Daha hafif bir gölge */
+}
+
+/* Footer */
+footer {
+  padding: 10px;
+  text-align: center;
+  background-color: #002244;
+  color: #c9d1de;
+  font-size: 0.85rem;
+  bottom: 0;
+  right: 0;
+}
+
+/* Kart ve Diğer Stiller */
+.card {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.15rem;
+  color: #003366;
+  margin-bottom: 8px;
+}
+
+/* Geçiş Animasyonları */
+.rotate-animation {
+  transition: transform 0.5s ease;
+}
+
+.rotate-up {
+  transform: rotate(180deg);
+}
+
+.rotate-down {
+  transform: rotate(0deg);
+}
+
+/* Tıklanabilir başlık için */
+.clickable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+/* Ortak Arama Çubuğu Stili */
+.search-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Ortak Arama Çubuğu */
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d9dee3;
+}
+
+/* Minimalist Sidebar */
+.minimalist-sidebar {
+  background-color: #222;
+  padding: 1rem;
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.minimalist-sidebar h4 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.minimalist-sidebar a {
+  color: #bbb;
+  font-size: 0.9rem;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    border-radius 0.3s ease;
+  border-radius: 5px; /* Kenarları hafif yuvarlatır */
+}
+
+.minimalist-sidebar a:hover {
+  background-color: #444;
+  color: #ffffff;
+  transform: scale(1.05);
+  border-radius: 10px; /* Hover durumunda daha yuvarlatılmış kenarlar */
+}
+
+.minimalist-sidebar a:active {
+  background-color: #555; /* Aktif durum için koyu gri */
+}
+
+.minimalist-sidebar .logout {
+  margin-top: auto;
+  color: #ff6b6b;
+}
+
+.minimalist-sidebar i {
+  font-size: 1.2rem;
+}
+
+/* Yuvarlatılmış Kenarlar */
+.minimalist-sidebar a:hover {
+  background-color: #444;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.custom-file-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0.375rem 0.75rem;
+    cursor: pointer;
+}
+
+.custom-file-input {
+    cursor: pointer;
+}
+
+.vesikalik-img {
+    max-width: 100px;
+    margin-top: 10px;
+}
