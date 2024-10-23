@@ -28,24 +28,24 @@ class StaffModel
   }
 
   // Tek bir personel kaydı getir
-    public function getStaffById($staffId)
-    {
+  public function getStaffById($staffId)
+  {
         $sql = "
         SELECT s.*, p.professionName 
         FROM staff s
         LEFT JOIN profession p ON s.professionId = p.professionId
         WHERE s.staffId = :staffId
     ";
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':staffId', $staffId, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Veritabanı hatası: " . $e->getMessage());
-            return null;
-        }
+    try {
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->bindParam(':staffId', $staffId, PDO::PARAM_INT);
+      $stmt->execute();
+      return $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+      error_log("Veritabanı hatası: " . $e->getMessage());
+      return null;
     }
+  }
 
   // Yeni bir personel ekle
   public function createStaff($data)

@@ -1,5 +1,7 @@
 <?php
+include "../../Controllers/ProfessionController.php";
 $title = "Dashboard";
+$counter = 1;
 
 $content = "
     <div class='page-content'>

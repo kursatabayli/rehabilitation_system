@@ -15,6 +15,30 @@
         $(this).find('i').toggleClass('rotate-up rotate-down');
     });
 
+    // Arama alanında yazıldıkça tabloyu filtrele
+    $("#search-input").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        var visibleRows = 0;
+
+        $(".table-responsive table tbody tr").filter(function () {
+            var isVisible = $(this).find(".find").text().toLowerCase().indexOf(value) > -1;
+            $(this).toggle(isVisible);
+
+            if (isVisible) {
+                visibleRows++;
+            }
+        });
+
+        // Sonuç bulunamazsa uyarı göster, aksi takdirde gizle
+        if (visibleRows === 0) {
+            if ($(".no-results").length === 0) {
+                $(".table-responsive").append('<div class="alert alert-warning no-results mt-3">Arama kriterine uygun sonuç bulunamadı.</div>');
+            }
+        } else {
+            $(".no-results").remove();
+        }
+    });
+
     // Sweet Alert DELETE
     function setupDeleteButtons() {
         $('.btn-delete').click(function (e) {
@@ -84,7 +108,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             if (response.redirectUrl != null) {
-                                window.location.href = response.redirectUrl;
+                            window.location.href = response.redirectUrl;
                             } else {
                                 location.reload();
                             }
