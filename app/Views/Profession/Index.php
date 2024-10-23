@@ -22,22 +22,22 @@ $content = "
                             </thead>
                             <tbody>";
 
-                                foreach ($professions as $profession) {
-                                    $content .= "
-                                                            <tr>
-                                                                <td>{$counter}</td>
-                                                                <td class='find'>" . htmlspecialchars($profession['professionName'], ENT_QUOTES, 'UTF-8') . "</td>
-                                                                <td><a href='Update.php?id={$profession['professionId']}' class='btn btn-outline-success'>Güncelle</a></td>
-                                                                <td><button data-url='../../Controllers/ProfessionController.php?id={$profession['professionId']}' class='btn btn-outline-danger btn-sm btn-delete'>Sil</button></td>
-                                                            </tr>";
-                                    $counter++;
-                                }
+    foreach ($professions as $profession) {
+        $content .= "
+                                <tr>
+                                    <td>{$counter}</td>
+                                    <td class='find'>" . htmlspecialchars($profession['professionName'], ENT_QUOTES, 'UTF-8') . "</td>
+                                    <td><a href='Update.php?id={$profession['professionId']}' class='btn btn-outline-success'>Güncelle</a></td>
+                                    <td><button data-url='../../Controllers/ProfessionController.php?id={$profession['professionId']}' class='btn btn-outline-danger btn-sm btn-delete'>Sil</button></td>
+                                </tr>";
+        $counter++;
+    }
 
     $content .= "
                             </tbody>
                         </table>
                     </div>
-                   <a href='Create.php' class='btn btn-outline-primary'>Meslek Ekle</a>
+                    <a href='Create.php' class='btn btn-outline-primary'>Meslek Ekle</a>
                 </div>
             </div>
         </div>
