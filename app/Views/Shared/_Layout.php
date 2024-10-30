@@ -1,3 +1,8 @@
+<?php
+include_once '../../Helpers/auth.php';
+checkAuth(); // Tüm sayfalar için yetkilendirme kontrolü
+?>
+
 <!DOCTYPE html>
 <html lang="tr">
 <?php include("_Head.php"); ?>

@@ -29,11 +29,11 @@ $content = "
     $content .= "
                                 <tr>
                                     <td>{$counter}</td>
-                                    <td class='find'>" . htmlspecialchars($staff['name'] . " " . $staff['surname'], ENT_QUOTES, 'UTF-8') . "</td>
+                                    <td>" . htmlspecialchars($staff['name'] . " " . $staff['surname'], ENT_QUOTES, 'UTF-8') . "</td>
                                     <td>" . htmlspecialchars($staff['professionName'], ENT_QUOTES, 'UTF-8') . "</td>
                                 <td><a href='Detail.php?id=" . htmlspecialchars($staff['staffId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-info'>Detay Gör</a></td>
                                 <td><a href='Update.php?id=" . htmlspecialchars($staff['staffId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-success'>Güncelle</a></td>
-                                <td><a href='AddSpecialty.php?id=" . htmlspecialchars($staff['staffId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-primary'>Düzenle</a></td>
+                                <td><a href='staffSpecialty.php?id=" . htmlspecialchars($staff['staffId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-primary'>Düzenle</a></td>
                                 <td><button data-url='../../Controllers/StaffController.php?id=" . htmlspecialchars($staff['staffId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-danger btn-sm btn-delete'>Sil</button></td>
                                 </tr>";
     $counter++;

@@ -9,7 +9,7 @@ $content = "
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Öğrenci Ekle</h4>
                     <p class='card-subtitle mb-4'>Yeni bir öğrenci ekleyin.</p>
-                    <form data-action-type='create' action='../../Controllers/StudentController.php' method='post' enctype='multipart/form-data'>
+                    <form class='input-sm' data-action-type='create' action='../../Controllers/StudentController.php' method='post' enctype='multipart/form-data'>
                         <div class='form-group mb-4'>
                             <label for='name'>Ad</label>
                             <input type='text' class='form-control' id='name' name='name' placeholder='Öğrencinin adını girin...' required>

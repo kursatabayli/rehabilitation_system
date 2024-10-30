@@ -18,7 +18,7 @@ $content = "
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Öğrenci Güncelle</h4>
                     <p class='card-subtitle mb-4'>Öğrenci bilgilerini güncelleyin.</p>
-                    <form data-action-type='update' action='../../Controllers/StudentController.php' method='post' enctype='multipart/form-data'>
+                    <form class='input-sm' data-action-type='update' action='../../Controllers/StudentController.php' method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='studentId' value='{$studentId}'>
                         <div class='form-group mb-4'>
                             <label for='name'>Ad</label>

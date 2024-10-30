@@ -13,7 +13,7 @@ $content = "
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Personel Güncelle</h4>
                     <p class='card-subtitle mb-4'>Personel bilgilerini güncelleyin.</p>
-                    <form data-action-type='update' action='../../Controllers/StaffController.php' method='post' enctype='multipart/form-data'>
+                    <form class='input-sm' data-action-type='update' action='../../Controllers/StaffController.php' method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='staffId' value='{$staff['staffId']}'>
                         <div class='form-group mb-4'>
                             <label for='name'>Ad</label>

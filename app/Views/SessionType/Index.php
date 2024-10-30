@@ -26,7 +26,7 @@ $content = "
         $content .= "
                                 <tr>
                                     <td>{$counter}</td>
-                                    <td class='find'>" . htmlspecialchars($item['sessionType'], ENT_QUOTES, 'UTF-8') . "</td>
+                                    <td>" . htmlspecialchars($item['sessionType'], ENT_QUOTES, 'UTF-8') . "</td>
                                     <td><a href='Update.php?id={$item['sessionTypeId']}' class='btn btn-outline-success'>Güncelle</a></td>
                                     <td><button data-url='../../Controllers/SessionTypeController.php?id={$item['sessionTypeId']}' class='btn btn-outline-danger btn-sm btn-delete'>Sil</button></td>
                                 </tr>";

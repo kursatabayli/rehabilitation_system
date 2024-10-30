@@ -12,7 +12,7 @@ $content = "
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Personel Ekle</h4>
                     <p class='card-subtitle mb-4'>Yeni bir personel ekleyin.</p>
-                    <form data-action-type='create' action='../../Controllers/StaffController.php' method='post' enctype='multipart/form-data'>
+                    <form class='input-sm' data-action-type='create' action='../../Controllers/StaffController.php' method='post' enctype='multipart/form-data'>
                         <div class='form-group mb-4'>
                             <label for='name'>Ad</label>
                             <input type='text' class='form-control' id='name' name='name' placeholder='Adını girin...' required>

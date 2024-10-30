@@ -22,9 +22,9 @@ $content = "
                                     <th>#</th>
                                     <th>Öğrenci Adı-Soyadı</th>
                                     <th>Kimlik Numarası</th>
-                                    <th>İletişim Numarası</th>
-                                    <th>Durum</th>
                                     <th>Detay Gör</th>
+                                    <th>Güncelle</th>
+                                    <th>Durum</th>
                                 </tr>
                             </thead>
                             <tbody>";
@@ -36,9 +36,9 @@ $content = "
                                     <td>{$counter}</td>
                                     <td>" . htmlspecialchars($student['name'], ENT_QUOTES, 'UTF-8') . ' ' . htmlspecialchars($student['surname'], ENT_QUOTES, 'UTF-8') . "</td>
                                     <td>" . htmlspecialchars($student['identityNumber'], ENT_QUOTES, 'UTF-8') . "</td>
-                                    <td>" . htmlspecialchars($student['parentPhoneNumber'], ENT_QUOTES, 'UTF-8') . "</td>
-                                    <td>{$status}</td>
                                     <td><a href='Detail.php?id={$student['studentId']}' class='btn btn-outline-info'>Detay Gör</a></td>
+                                    <td><a href='Update.php?id=" . htmlspecialchars($student['studentId'], ENT_QUOTES, 'UTF-8') . "' class='btn btn-outline-success'>Güncelle</a></td>
+                                    <td>{$status}</td>
                                 </tr>";
         $counter++;
     }

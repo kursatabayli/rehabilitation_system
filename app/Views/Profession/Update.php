@@ -11,7 +11,7 @@ $content = "
             <div class='row'>
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Meslek Güncelle</h4>
-                    <form data-action-type='update' action='../../Controllers/ProfessionController.php' method='post'>
+                    <form class='input-sm' data-action-type='update' action='../../Controllers/ProfessionController.php' method='post'>
                         <input type='hidden' name='professionId' value='{$profession['professionId']}'>
                         <div class='form-group mb-4'>
                             <label for='professionName'>Meslek Adı</label>

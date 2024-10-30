@@ -12,7 +12,7 @@ $content = "
             <div class='row'>
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Uzmanlık Güncelle</h4>
-                    <form data-action-type='update' action='../../Controllers/SpecialtyController.php' method='post'>
+                    <form class='input-sm' data-action-type='update' action='../../Controllers/SpecialtyController.php' method='post'>
                         <input type='hidden' name='specialtyId' value='{$specialtyId}'>
                         <div class='form-group mb-4'>
                             <label for='specialtyName'>Uzmanlık Adı</label>

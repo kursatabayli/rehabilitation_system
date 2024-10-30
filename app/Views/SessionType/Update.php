@@ -12,7 +12,7 @@ $content = "
             <div class='row'>
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Seans Türü Güncelle</h4>
-                    <form data-action-type='update' action='../../Controllers/SessionTypeController.php' method='post'>
+                    <form class='input-sm' data-action-type='update' action='../../Controllers/SessionTypeController.php' method='post'>
                         <input type='hidden' name='sessionTypeId' value='{$sessionTypeId}'>
                         <div class='form-group mb-4'>
                             <label for='sessionType'>Seans Türü</label>

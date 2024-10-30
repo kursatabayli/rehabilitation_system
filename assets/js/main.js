@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(
+    function () {
     // Tüm genel tablo'ları başlat
     $('.dataTable').DataTable({
         "language": {
@@ -15,29 +16,6 @@
         $(this).find('i').toggleClass('rotate-up rotate-down');
     });
 
-    // Arama alanında yazıldıkça tabloyu filtrele
-    $("#search-input").on("keyup", function () {
-        var value = $(this).val().toLowerCase();
-        var visibleRows = 0;
-
-        $(".table-responsive table tbody tr").filter(function () {
-            var isVisible = $(this).find(".find").text().toLowerCase().indexOf(value) > -1;
-            $(this).toggle(isVisible);
-
-            if (isVisible) {
-                visibleRows++;
-            }
-        });
-
-        // Sonuç bulunamazsa uyarı göster, aksi takdirde gizle
-        if (visibleRows === 0) {
-            if ($(".no-results").length === 0) {
-                $(".table-responsive").append('<div class="alert alert-warning no-results mt-3">Arama kriterine uygun sonuç bulunamadı.</div>');
-            }
-        } else {
-            $(".no-results").remove();
-        }
-    });
 
     // Sweet Alert DELETE
     function setupDeleteButtons() {
@@ -59,11 +37,17 @@
                     $.ajax({
                         url: url,
                         method: 'DELETE',
-                        success: function () {
+                        success: function (response) {
                             Swal.fire('Silindi!', `Veri kaydı başarıyla silindi.`, 'success')
                                 .then(() => {
-                                    // Satırı DOM'dan kaldır
-                                    row.remove();
+                                    // Gelen yanıt içinde redirectUrl olup olmadığını kontrol et
+                                    if (response.redirectUrl) {
+                                        // redirectUrl varsa sayfayı yönlendir
+                                        window.location.href = response.redirectUrl;
+                                    } else {
+                                        // redirectUrl yoksa satırı DOM'dan kaldır
+                                        row.remove();
+                                    }
                                 });
                         },
                         error: function () {
@@ -80,7 +64,6 @@
 
 
     // Sweet Alert CREATE/UPDATE
-
     $('form').on('submit', function (e) {
         e.preventDefault();
         var form = $(this);
@@ -108,7 +91,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             if (response.redirectUrl != null) {
-                            window.location.href = response.redirectUrl;
+                                window.location.href = response.redirectUrl;
                             } else {
                                 location.reload();
                             }
@@ -151,15 +134,13 @@
                 "next": "&#129170;" // Sağ ok
             },
             "zeroRecords": '<div class="alert alert-warning no-results mt-3">Arama kriterine uygun sonuç bulunamadı.</div>',
-            "emptyTable": '<div class="alert alert-danger at-3" role="alert"><p><i>Daha önce eklenen herhangi bir veri bulunamadı. <strong>Ekle</strong> butonunu kullanarak yeni bir veri girişi yapabilirsiniz</i></p></div>'
-
+            "emptyTable": '<div class="alert alert-danger mt-3" role="alert"><p><i>Daha önce eklenen herhangi bir veri bulunamadı. <strong>Ekle</strong> butonunu kullanarak yeni bir veri girişi yapabilirsiniz</i></p></div>'
         },
         "initComplete": function () {
             // Arama input'una placeholder ekle
             $('div.dataTables_filter input').attr('placeholder', 'Ara...');
         }
     });
-
 
     // Resme tıklanınca modal aç
     $('#viewImage').click(function (e) {
@@ -171,7 +152,7 @@
 
         Swal.fire({
             title: name + ' ' + surname,
-            html: '<img src="' + $(this).find('img').attr('src') + '"class="img-fluid">',
+            html: '<img src="' + $(this).find('img').attr('src') + '" class="img-fluid">',
             showCloseButton: true,
             showConfirmButton: false,
             width: 'auto', // Modala göre otomatik genişlik
@@ -180,4 +161,137 @@
         });
     });
 
+    // Select2'yi dropdown'lar için etkinleştirme
+    $('#staffId').select2({
+        placeholder: 'Personel arayın',
+        allowClear: true
+    });
+
+    $('#studentId').select2({
+        placeholder: 'Öğrenci arayın',
+        allowClear: true
+    });
+
+    // Gün seçildiğinde seans saatlerini ve seansları getir ve URL’yi güncelle
+    const dayLinks = document.querySelectorAll('a[href^="?dayId"]');
+    dayLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const dayId = new URL(this.href).searchParams.get('dayId');
+
+            // Seçili gün vurgusu
+            dayLinks.forEach(l => l.classList.remove('selected-day'));
+            this.classList.add('selected-day');
+
+            // URL'yi güncelle (sayfa yeniden yüklenmeden)
+            history.pushState(null, '', `?dayId=${dayId}`);
+
+            // Seansları güncelle
+            fetchSessions(dayId);
+        });
+    });
+
+    // Seans saatlerini ve seansları almak için AJAX fonksiyonu
+    function fetchSessions(dayId) {
+        fetch(`../../Controllers/SessionController.php?dayId=${dayId}`)
+            .then(response => response.json())
+            .then(data => {
+                const tableHeadElement = document.querySelector('#sessionsTable thead');
+                const tableBodyElement = document.querySelector('#sessionsTable tbody');
+                const sessionsTable = document.getElementById('sessionsTable');
+                const noSessionsMessage = document.getElementById('noSessionsMessage');
+
+                tableHeadElement.innerHTML = "";
+                tableBodyElement.innerHTML = "";
+                sessionsTable.style.display = 'none';
+                noSessionsMessage.style.display = 'none';
+
+                if (data.length === 0) {
+                    noSessionsMessage.style.display = 'block';
+                } else {
+                    sessionsTable.style.display = 'table';
+                    let tableHead = "<tr><th>Personeller</th>";
+                    let tableBody = "";
+                    const staffSessions = {};
+
+                    data.forEach(item => {
+                        const startTime = item.time.sessionStartTime.substring(0, 5);
+                        const endTime = item.time.sessionEndTime.substring(0, 5);
+                        tableHead += `<th>${startTime} - ${endTime}</th>`;
+
+                        item.sessions.forEach(session => {
+                            const staffName = `${session.staffName} ${session.staffSurname}`;
+                            if (!staffSessions[staffName]) {
+                                staffSessions[staffName] = {};
+                            }
+                            const sessionContent = session.studentName
+                                ? `<a href="Update.php?sessionId=${session.sessionId}">${session.studentName} ${session.studentSurname}<br>${session.sessionType ? ' (' + session.sessionType + ')' : ''}</a>`
+                                : '-';
+                            staffSessions[staffName][`${startTime}-${endTime}`] = sessionContent;
+                        });
+                    });
+
+                    tableHead += "</tr>";
+
+                    Object.keys(staffSessions).forEach(staffName => {
+                        tableBody += `<tr><td>${staffName}</td>`;
+                        data.forEach(item => {
+                            const startTime = item.time.sessionStartTime.substring(0, 5);
+                            const endTime = item.time.sessionEndTime.substring(0, 5);
+                            const session = staffSessions[staffName][`${startTime}-${endTime}`] || '-';
+                            tableBody += `<td>${session}</td>`;
+                        });
+                        tableBody += "</tr>";
+                    });
+
+                    tableHeadElement.innerHTML = tableHead;
+                    tableBodyElement.innerHTML = tableBody;
+                }
+            })
+            .catch(error => {
+                console.error('Seanslar getirilemedi:', error);
+            });
+    }
+
+    // URL'deki dayId parametresine göre varsayılan gün belirleme
+    const urlParams = new URLSearchParams(window.location.search);
+    const dayId = urlParams.get('dayId') || '1'; // Varsayılan: Pazartesi
+    fetchSessions(dayId);
+
+    // Seçili gün vurgusunu güncelle
+    dayLinks.forEach(link => {
+        const linkDayId = new URL(link.href).searchParams.get('dayId');
+        if (linkDayId === dayId) {
+            link.classList.add('selected-day');
+        }
+    });
+
+
+
+    $('#studentId').change(function () {
+        var studentId = $(this).val();
+
+        if (studentId) {
+            $.ajax({
+                url: '../../Controllers/StudentSessionTypeController.php',
+                method: 'GET',
+                data: { id: studentId },
+                success: function (response) {
+                    var sessionTypeSelect = $('#sessionTypeId');
+                    sessionTypeSelect.empty(); // Önceki seçenekleri temizle
+                    sessionTypeSelect.append('<option value="">Seans Türü Seçin</option>'); // Varsayılan boş seçenek
+
+                    // Gelen seans türlerini dropdown'a ekle
+                    response.forEach(function (item) {
+                        sessionTypeSelect.append('<option value="' + item.sessionTypeId + '">' + item.sessionType + '</option>');
+                    });
+                },
+                error: function () {
+                    alert('Seans türleri alınamadı. Lütfen tekrar deneyin.');
+                }
+            });
+        } else {
+            $('#sessionTypeId').empty().append('<option value="">Seans Türü Seçin</option>'); // Eğer öğrenci seçilmezse boşalt
+        }
+    });
 });

@@ -9,7 +9,7 @@ $content = "
                 <div class='col-xl-12'>
                     <h4 class='card-title'>Meslek Ekle</h4>
                     <p class='card-subtitle mb-4'>Yeni bir meslek ekleyin.</p>
-                    <form data-action-type='create' action='../../Controllers/ProfessionController.php' method='post'>
+                    <form class='input-sm' data-action-type='create' action='../../Controllers/ProfessionController.php' method='post'>
                         <div class='form-group mb-4'>
                             <label for='professionName'>Meslek Adı</label>
                             <input type='text' class='form-control' id='professionName' name='professionName' placeholder='Meslek adını girin...' required>

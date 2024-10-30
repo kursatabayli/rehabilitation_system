@@ -7,6 +7,6 @@
     <RuntimeVersion>8.2</RuntimeVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="assets\img\" />
+    <Folder Include="assets\img\staff_images\" />
   </ItemGroup>
 </Project>
