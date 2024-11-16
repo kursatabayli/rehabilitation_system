@@ -41,10 +41,8 @@ class StudentModel
     // Yeni bir öğrenci ekle
     public function createStudent($data)
     {
-        $sql = "
-      INSERT INTO student (name, surname, identityNumber, birthDate, parentNameSurname, parentPhoneNumber, parentAddress, parentIdentificationNumber, medicalCondition, aegrotatNumber, aegrotatValidityDate, monthlySessions, studentImage, isActive)
-      VALUES (:name, :surname, :identityNumber, :birthDate, :parentNameSurname, :parentPhoneNumber, :parentAddress, :parentIdentificationNumber, :medicalCondition, :aegrotatNumber, :aegrotatValidityDate, :monthlySessions, :studentImage, :isActive)
-    ";
+        $sql = "INSERT INTO student (name, surname, identityNumber, birthDate, parentNameSurname, parentPhoneNumber, parentAddress, parentIdentificationNumber, medicalCondition, aegrotatNumber, aegrotatValidityDate, monthlySessions, isActive)
+                VALUES (:name, :surname, :identityNumber, :birthDate, :parentNameSurname, :parentPhoneNumber, :parentAddress, :parentIdentificationNumber, :medicalCondition, :aegrotatNumber, :aegrotatValidityDate, :monthlySessions, :isActive)";
         try {
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($data);
@@ -57,12 +55,7 @@ class StudentModel
     // Öğrenci güncelle
     public function updateStudent($studentId, $data)
     {
-        $sql = "
-      UPDATE student SET name = :name, surname = :surname, identityNumber = :identityNumber, birthDate = :birthDate,
-      parentNameSurname = :parentNameSurname, parentPhoneNumber = :parentPhoneNumber, parentAddress = :parentAddress, parentIdentificationNumber = :parentIdentificationNumber, 
-      medicalCondition = :medicalCondition, aegrotatNumber = :aegrotatNumber, aegrotatValidityDate = :aegrotatValidityDate, monthlySessions = :monthlySessions, studentImage = :studentImage, isActive = :isActive
-      WHERE studentId = :studentId
-    ";
+        $sql = "UPDATE student SET name = :name, surname = :surname, identityNumber = :identityNumber, birthDate = :birthDate, parentNameSurname = :parentNameSurname, parentPhoneNumber = :parentPhoneNumber, parentAddress = :parentAddress, parentIdentificationNumber = :parentIdentificationNumber, medicalCondition = :medicalCondition, aegrotatNumber = :aegrotatNumber, aegrotatValidityDate = :aegrotatValidityDate, monthlySessions = :monthlySessions, isActive = :isActive WHERE studentId = :studentId";
         try {
             $stmt = $this->pdo->prepare($sql);
             $data['studentId'] = $studentId;

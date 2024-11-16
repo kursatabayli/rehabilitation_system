@@ -51,8 +51,8 @@ class StaffModel
   public function createStaff($data)
   {
     $sql = "
-      INSERT INTO staff (name, surname, personnelNumber, medicalLicenceNumber, professionId, identityNumber, phoneNumber, email, staffImage) 
-      VALUES (:name, :surname, :personnelNumber, :medicalLicenceNumber, :professionId, :identityNumber, :phoneNumber, :email, :staffImage)
+      INSERT INTO staff (name, surname, personnelNumber, medicalLicenceNumber, professionId, identityNumber, phoneNumber, email) 
+      VALUES (:name, :surname, :personnelNumber, :medicalLicenceNumber, :professionId, :identityNumber, :phoneNumber, :email)
     ";
     try {
       $stmt = $this->pdo->prepare($sql);
@@ -66,11 +66,7 @@ class StaffModel
   // Personel güncelle
   public function updateStaff($staffId, $data)
   {
-    $sql = "
-      UPDATE staff SET name = :name, surname = :surname, personnelNumber = :personnelNumber, medicalLicenceNumber = :medicalLicenceNumber, 
-      professionId = :professionId, identityNumber = :identityNumber, phoneNumber = :phoneNumber, email = :email, staffImage = :staffImage 
-      WHERE staffId = :staffId
-    ";
+    $sql = "UPDATE staff SET name = :name, surname = :surname, personnelNumber = :personnelNumber, medicalLicenceNumber = :medicalLicenceNumber, professionId = :professionId, identityNumber = :identityNumber, phoneNumber = :phoneNumber, email = :email WHERE staffId = :staffId";
     try {
       $stmt = $this->pdo->prepare($sql);
       $data['staffId'] = $staffId;

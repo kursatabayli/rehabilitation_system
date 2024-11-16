@@ -1,5 +1,4 @@
 <?php
-// Controllers/ProfessionController.php
 
 include_once __DIR__ . '/../Models/ProfessionModel.php';
 include_once __DIR__ . '/../../config/database.php';

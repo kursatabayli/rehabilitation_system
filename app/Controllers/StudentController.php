@@ -24,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['studentId'])) {
         ':aegrotatNumber' => $_POST['aegrotatNumber'],
         ':aegrotatValidityDate' => $_POST['aegrotatValidityDate'],
         ':monthlySessions' => $_POST['monthlySessions'],
-        ':studentImage' => $_POST['studentImage'] ?? null,
         ':isActive' => $_POST['isActive']
     ];
     $success = $studentModel->createStudent($data);
@@ -50,7 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentId'])) {
         ':aegrotatNumber' => $_POST['aegrotatNumber'],
         ':aegrotatValidityDate' => $_POST['aegrotatValidityDate'],
         ':monthlySessions' => $_POST['monthlySessions'],
-        ':studentImage' => $_POST['studentImage'] ?? null,
         ':isActive' => $_POST['isActive']
     ];
     $success = $studentModel->updateStudent($studentId, $data);

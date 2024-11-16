@@ -1,15 +1,15 @@
 <?php
-include_once '../../Helpers/auth.php';
+include_once '../../Helpers/Auth.php';
 checkAuth(); // Tüm sayfalar için yetkilendirme kontrolü
 ?>
 
 <!DOCTYPE html>
 <html lang="tr">
+
 <?php include("_Head.php"); ?>
 
 <body>
   <?php
-
   include("_Sidebar.php");
 
   echo "<div class='main-content'>";
@@ -22,7 +22,8 @@ checkAuth(); // Tüm sayfalar için yetkilendirme kontrolü
 
   echo "</div>";
 
-  include("_Script.php"); ?>
+  include("_Script.php");
+  ?>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 // Controllers/SettingsController.php
 
 include_once __DIR__ . '/../../config/database.php';
-include_once __DIR__ . '/../Models/AdminModel.php';
+include_once __DIR__ . '/../Models/LoginModel.php';
 
 class SettingsController
 {
@@ -10,7 +10,7 @@ class SettingsController
 
     public function __construct($pdo)
     {
-        $this->adminModel = new AdminModel($pdo);
+        $this->adminModel = new LoginModel($pdo);
     }
 
     public function changePassword($adminId, $currentPassword, $newPassword, $confirmPassword)

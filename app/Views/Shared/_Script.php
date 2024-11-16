@@ -1,6 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="../../../assets/js/jquery-3.7.1.min.js"></script>
+<script src="../../../assets/js/bootstrap.min.js"></script>
+<script src="../../../assets/js/jquery.dataTables.min.js"></script>
+<script src="../../../assets/js/select2.min.js"></script>
+<script src="../../../assets/js/all.min.js"></script>
 <script src="../../../assets/js/sweetalert2.min.js"></script>
-<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/script.js"></script>

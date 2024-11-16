@@ -22,8 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_POST['staffId'])) {
     ':professionId' => $_POST['professionId'],
     ':identityNumber' => $_POST['identityNumber'],
     ':phoneNumber' => $_POST['phoneNumber'],
-    ':email' => $_POST['email'],
-    ':staffImage' => $_POST['staffImage'] ?? null
+    ':email' => $_POST['email']
   ];
   $success = $staffModel->createStaff($data);
   $response = ['success' => $success, 'redirectUrl' => '../../Views/Staff/Index.php'];
@@ -43,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['staffId'])) {
     ':professionId' => $_POST['professionId'],
     ':identityNumber' => $_POST['identityNumber'],
     ':phoneNumber' => $_POST['phoneNumber'],
-    ':email' => $_POST['email'],
-    ':staffImage' => $_POST['staffImage'] ?? null
+    ':email' => $_POST['email']
   ];
   $success = $staffModel->updateStaff($staffId, $data);
   $response = ['success' => $success, 'redirectUrl' => '../../Views/Staff/Index.php'];

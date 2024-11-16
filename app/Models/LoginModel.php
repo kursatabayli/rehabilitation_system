@@ -1,5 +1,5 @@
 <?php
-class AdminModel
+class LoginModel
 {
     private $pdo;
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once __DIR__ . '/../../config/database.php'; // Absolute path kullanarak dahil etme
-include_once __DIR__ . '/../Models/AdminModel.php'; // Absolute path kullanarak dahil etme
+include_once __DIR__ . '/../../config/database.php';
+include_once __DIR__ . '/../Models/LoginModel.php';
 
 class LoginController
 {
@@ -9,7 +9,7 @@ class LoginController
 
     public function __construct($pdo)
     {
-        $this->adminModel = new AdminModel($pdo);
+        $this->adminModel = new LoginModel($pdo);
     }
 
     public function login()
@@ -22,12 +22,12 @@ class LoginController
             $admin = $this->adminModel->authenticate($username, $password);
 
             if ($admin) {
-                $_SESSION['admin_id'] = $admin['adminId']; // Oturuma admin ID'si eklenir
+                $_SESSION['admin_id'] = $admin['adminId'];
                 $_SESSION['username'] = $admin['userName'];
-                header('Location: /app/Views/Home/Index.php'); // Başarılı giriş sonrası yönlendirme
+                header('Location: /rehabilitation_system/app/Views/Home/Index.php');
                 exit;
             } else {
-                return "Geçersiz kullanıcı adı veya şifre.";
+                return "Kullanıcı Adı Veya Şifre Yanlış!";
             }
         }
         return null;

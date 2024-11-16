@@ -1,20 +1,17 @@
 <?php
-// Hata gösterimini açma (Geliştirme aşamasında hataları görmek için)
+global $pdo;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Gerekli dosyaları dahil etme
 include_once '../../Controllers/LoginController.php';
 include_once '../../../config/database.php';
 
-// LoginController'ı başlatıyoruz
 $loginController = new LoginController($pdo);
 
-// POST isteği olup olmadığını kontrol ediyoruz ve giriş işlemini başlatıyoruz
 $error = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $error = $loginController->login(); // Başarısız olursa hata mesajı döner
+    $error = $loginController->login();
 }
 ?>
 
@@ -59,8 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     function togglePassword() {
         const passwordField = document.getElementById("password");
         const toggleIcon = document.querySelector(".toggle-password");
-        
-        // Şifreyi göster/gizle
+
         if (passwordField.type === "password") {
             passwordField.type = "text";
             toggleIcon.classList.remove("fa-eye");
