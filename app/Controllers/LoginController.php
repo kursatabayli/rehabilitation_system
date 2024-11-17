@@ -5,11 +5,11 @@ include_once __DIR__ . '/../Models/LoginModel.php';
 
 class LoginController
 {
-    private $adminModel;
+    private $loginModel;
 
     public function __construct($pdo)
     {
-        $this->adminModel = new LoginModel($pdo);
+        $this->loginModel = new LoginModel($pdo);
     }
 
     public function login()
@@ -19,12 +19,12 @@ class LoginController
             $password = $_POST['password'];
 
             // Admin'i veritabanında doğrulama
-            $admin = $this->adminModel->authenticate($username, $password);
+            $admin = $this->loginModel->authenticate($username, $password);
 
             if ($admin) {
                 $_SESSION['admin_id'] = $admin['adminId'];
                 $_SESSION['username'] = $admin['userName'];
-                header('Location: /rehabilitation_system/app/Views/Home/Index.php');
+                header('Location: ../../Views/Home/Index.php');
                 exit;
             } else {
                 return "Kullanıcı Adı Veya Şifre Yanlış!";

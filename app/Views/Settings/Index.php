@@ -15,20 +15,29 @@ ob_start();
             <div class="col-xl-12">
                 <h4 class="card-title">Şifre Değiştir</h4>
                 <p class="card-subtitle mb-4">Mevcut şifrenizi girin ve yeni şifrenizi belirleyin.</p>
-                <form action="" method="POST" class="form-settings">
+                <form action="" method="POST" class="form-settings input-sm">
                     <div class="form-group">
                         <label for="currentPassword">Mevcut Şifre:</label>
-                        <input type="password" id="currentPassword" name="currentPassword" class="form-control input-sm" required>
+                        <div class="password-wrapper">
+                            <input type="password" id="currentPassword" name="currentPassword" class="form-control" required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword('currentPassword')"></i>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="newPassword">Yeni Şifre:</label>
-                        <input type="password" id="newPassword" name="newPassword" class="form-control input-sm" required>
+                        <div class="password-wrapper">
+                            <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword('newPassword')"></i>
+                        </div>
                     </div>
 
                     <div class="form-group">
                         <label for="confirmPassword">Yeni Şifre (Tekrar):</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control input-sm" required>
+                        <div class="password-wrapper">
+                            <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+                            <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword')"></i>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Şifreyi Güncelle</button>

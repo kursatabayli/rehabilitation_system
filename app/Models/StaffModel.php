@@ -30,7 +30,7 @@ class StaffModel
   // Tek bir personel kaydı getir
   public function getStaffById($staffId)
   {
-        $sql = "
+    $sql = "
         SELECT s.*, p.professionName 
         FROM staff s
         LEFT JOIN profession p ON s.professionId = p.professionId
@@ -51,8 +51,8 @@ class StaffModel
   public function createStaff($data)
   {
     $sql = "
-      INSERT INTO staff (name, surname, personnelNumber, medicalLicenceNumber, professionId, identityNumber, phoneNumber, email) 
-      VALUES (:name, :surname, :personnelNumber, :medicalLicenceNumber, :professionId, :identityNumber, :phoneNumber, :email)
+      INSERT INTO staff (name, surname, personnelNumber, medicalLicenceNumber, professionId, identityNumber, phoneNumber, email, password) 
+      VALUES (:name, :surname, :personnelNumber, :medicalLicenceNumber, :professionId, :identityNumber, :phoneNumber, :email, :password)
     ";
     try {
       $stmt = $this->pdo->prepare($sql);
@@ -66,7 +66,7 @@ class StaffModel
   // Personel güncelle
   public function updateStaff($staffId, $data)
   {
-    $sql = "UPDATE staff SET name = :name, surname = :surname, personnelNumber = :personnelNumber, medicalLicenceNumber = :medicalLicenceNumber, professionId = :professionId, identityNumber = :identityNumber, phoneNumber = :phoneNumber, email = :email WHERE staffId = :staffId";
+    $sql = "UPDATE staff SET name = :name, surname = :surname, personnelNumber = :personnelNumber, medicalLicenceNumber = :medicalLicenceNumber, professionId = :professionId, identityNumber = :identityNumber, phoneNumber = :phoneNumber, email = :email, password = :password WHERE staffId = :staffId";
     try {
       $stmt = $this->pdo->prepare($sql);
       $data['staffId'] = $staffId;

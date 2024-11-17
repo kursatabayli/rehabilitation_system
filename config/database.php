@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'rehabilitation_system';
 $username = 'root';
-$password = '2332';
+$password = '';
 
 try {
   $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);

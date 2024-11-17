@@ -84,92 +84,91 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Daha hafif bir gölge */
 }
 
-    /* Form Başlığı */
-    .page-content .card-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #003366;
-        margin-bottom: 1.5rem;
-    }
+/* Form Başlığı */
+.page-content .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
 
 /* Form Alanları */
 .form-group label {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
 .form-group .form-control {
-    background-color: #f9f9f9;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    padding: 0.6rem 1rem;
-    font-size: 1rem;
-    color: #333;
-    transition: border-color 0.3s ease;
+  background-color: #f9f9f9;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.3s ease;
 }
 
-    .form-group .form-control:focus {
-        border-color: #003366;
-        box-shadow: 0 0 8px rgba(0, 51, 102, 0.15);
-        outline: none;
-    }
+.form-group .form-control:focus {
+  border-color: #003366;
+  box-shadow: 0 0 8px rgba(0, 51, 102, 0.15);
+  outline: none;
+}
 
 /* Select2 - Seçim Alanları */
 .select2-container .select2-selection--single {
-    height: calc(2.25rem + 2px);
-    padding: 5px 12px;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    background-color: #f9f9f9;
+  height: calc(2.25rem + 2px);
+  padding: 5px 12px;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  background-color: #f9f9f9;
 }
 
 .select2-selection__rendered {
-    line-height: 1.5;
-    color: #333;
+  line-height: 1.5;
+  color: #333;
 }
 
 /* Butonlar */
-.btn-primary, .btn-secondary {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: 6px;
+.btn-primary,
+.btn-secondary {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 6px;
 }
 
 .btn-primary {
-    background-color: #0056b3;
-    border: none;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
+  background-color: #0056b3;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
 }
 
-    .btn-primary:hover {
-        background-color: #004494;
-    }
+.btn-primary:hover {
+  background-color: #004494;
+}
 
 .btn-secondary {
-    background-color: #6c757d;
-    border: none;
-    color: #ffffff;
-    transition: background-color 0.3s ease;
+  background-color: #6c757d;
+  border: none;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
 }
 
-    .btn-secondary:hover {
-        background-color: #5a6268;
-    }
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
 
 /* Form Genel Görünüm */
 .form-group {
-    margin-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
 }
 
-    .form-group:last-child {
-        display: flex;
-        gap: 10px;
-        justify-content: flex-start;
-    }
-
-
+.form-group:last-child {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
 
 /* Footer */
 footer {
@@ -220,11 +219,11 @@ footer {
 }
 
 .clickable-header {
-    cursor: pointer;
+  cursor: pointer;
   display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 0;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
 }
 
 /* Ortak Arama Çubuğu */
@@ -297,371 +296,368 @@ footer {
 }
 
 .custom-file-label {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    padding: 0.375rem 0.75rem;
-    cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
 }
 
 .custom-file-input {
-    cursor: pointer;
+  cursor: pointer;
 }
-
-.vesikalik-img {
-    max-width: 100px;
-    margin-top: 10px;
-    border-radius: 50%; /* Yuvarlak yapmak için */
-}
-
-
 
 /* Sayfalama sağa hizalama */
 .dataTables_wrapper .dataTables_paginate {
-    float: right;
-    margin-top: 10px;
+  float: right;
+  margin-top: 10px;
 }
 
-    /* Minimalist Sayfa Butonları */
-    .dataTables_wrapper .dataTables_paginate .paginate_button {
-        padding: 5px 8px;
-        margin: 0 2px;
-        background-color: transparent;
-        color: #333;
-        border: none;
-        font-size: 0.9rem;
-        border-radius: 4px; /* Kenarları yumuşat */
-        transition: color 0.2s ease, background-color 0.2s ease;
-    }
+/* Minimalist Sayfa Butonları */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  padding: 5px 8px;
+  margin: 0 2px;
+  background-color: transparent;
+  color: #333;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 4px; /* Kenarları yumuşat */
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
 
-        /* Aktif Buton */
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-            font-weight: bold;
-            color: #007bff;
-            background-color: transparent;
-            border-radius: 4px; /* Kenarları yumuşat */
-        }
+/* Aktif Buton */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  font-weight: bold;
+  color: #007bff;
+  background-color: transparent;
+  border-radius: 4px; /* Kenarları yumuşat */
+}
 
-        /* Hover Durumu */
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-            color: #007bff;
-            background-color: rgba(0, 123, 255, 0.1); /* Hafif bir arka plan ile vurgu */
-            border-radius: 4px;
-        }
-
+/* Hover Durumu */
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: #007bff;
+  background-color: rgba(0, 123, 255, 0.1); /* Hafif bir arka plan ile vurgu */
+  border-radius: 4px;
+}
 
 /* Kayıt sayısı seçici - sağa hizalama */
 .dataTables_wrapper .dataTables_length {
-    float: right; /* LengthMenu sağda olacak */
-    margin-top: 10px;
-    margin-bottom: 10px;
+  float: right; /* LengthMenu sağda olacak */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-    /* Kayıt sayısı seçici stil */
-    .dataTables_wrapper .dataTables_length select {
-        background-color: transparent;
-        color: #333;
-        font-size: 0.9rem;
-        padding: 2px;
-        border-radius: 4px; /* Kenarları yumuşat */
-        border: 1px solid #d9dee3; /* Dış hatları belirginleştir */
-        transition: color 0.2s ease, background-color 0.2s ease;
-        box-sizing: border-box; /* İç ve dış boşlukların boyutu etkilememesi için */
-    }
+/* Kayıt sayısı seçici stil */
+.dataTables_wrapper .dataTables_length select {
+  background-color: transparent;
+  color: #333;
+  font-size: 0.9rem;
+  padding: 2px;
+  border-radius: 4px; /* Kenarları yumuşat */
+  border: 1px solid #d9dee3; /* Dış hatları belirginleştir */
+  transition: color 0.2s ease, background-color 0.2s ease;
+  box-sizing: border-box; /* İç ve dış boşlukların boyutu etkilememesi için */
+}
 /* Arama kutusunu sola hizala */
 .dataTables_wrapper .dataTables_filter {
-    float: left; /* Search container sola hizalanacak */
+  float: left; /* Search container sola hizalanacak */
 }
 
 /* Datatables Search Input Stili */
-    .dataTables_wrapper .dataTables_filter input[type="search"] {
-        width: 100%;
-        max-width: 300px;
-        border-radius: 20px;
-        padding: 0.4rem 1rem;
-        border: 1px solid #d9dee3;
-        box-sizing: border-box; /* Paddinglerin genişliği etkilememesi için */
+.dataTables_wrapper .dataTables_filter input[type="search"] {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  border: 1px solid #d9dee3;
+  box-sizing: border-box; /* Paddinglerin genişliği etkilememesi için */
 }
 
 /* Minimalist Tablo Stili */
 #sessionsTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    border-radius: 8px;
-    overflow: hidden;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-    #sessionsTable th,
-    #sessionsTable td {
-        padding: 12px;
-        text-align: center;
-        border-bottom: 1px solid #e9ecef; /* İnce çizgi ile hücre ayrımı */
-    }
+#sessionsTable th,
+#sessionsTable td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef; /* İnce çizgi ile hücre ayrımı */
+}
 
-    #sessionsTable thead th {
-        background-color: #f3f6fa; /* Hafif gri tonlama */
-        color: #003366; /* Ana renk tonunuza uyumlu başlık rengi */
-        font-weight: 600;
-    }
+#sessionsTable thead th {
+  background-color: #f3f6fa; /* Hafif gri tonlama */
+  color: #003366; /* Ana renk tonunuza uyumlu başlık rengi */
+  font-weight: 600;
+}
 
-    #sessionsTable tbody tr:nth-child(even) {
-        background-color: #fafbfc; /* Zebra çizgili */
-    }
+#sessionsTable tbody tr:nth-child(even) {
+  background-color: #fafbfc; /* Zebra çizgili */
+}
 
-    #sessionsTable tbody tr:hover {
-        background-color: #f1f5f9; /* Hover durumunda hafif vurgulu */
-    }
+#sessionsTable tbody tr:hover {
+  background-color: #f1f5f9; /* Hover durumunda hafif vurgulu */
+}
 
-    /* Seans hücreleri için hover efekti */
-    #sessionsTable tbody td a {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.3s ease, opacity 0.3s ease;
-        position: relative;
-    }
+/* Seans hücreleri için hover efekti */
+#sessionsTable tbody td a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
 
-        #sessionsTable tbody td a:hover {
-            color: transparent; /* Yazıları soluklaştırmak için */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+#sessionsTable tbody td a:hover {
+  color: transparent; /* Yazıları soluklaştırmak için */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-            /* "Düzenle" metni hover durumunda görünür hale geliyor */
-            #sessionsTable tbody td a:hover::after {
-                content: 'Düzenle';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                color: #0056b3; /* Daha belirgin renk */
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 4px; /* Kenarları yumuşatma */
-                opacity: 1;
-            }
+/* "Düzenle" metni hover durumunda görünür hale geliyor */
+#sessionsTable tbody td a:hover::after {
+  content: "Düzenle";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #0056b3; /* Daha belirgin renk */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px; /* Kenarları yumuşatma */
+  opacity: 1;
+}
 
-
-    #sessionsTable tbody td:empty {
-        color: #c9d1de; /* Boş hücreler için açık renk */
-        font-style: italic;
-    }
-
+#sessionsTable tbody td:empty {
+  color: #c9d1de; /* Boş hücreler için açık renk */
+  font-style: italic;
+}
 
 #noSessionsMessage {
-    display: none;
-    text-align: center;
-    margin-top: 20px;
+  display: none;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /* Gün seçici menü */
 .days-menu {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 1.5rem;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .day-btn {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f3f6fa;
-    color: #003366;
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    text-decoration: none;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f3f6fa;
+  color: #003366;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
-    .day-btn:hover {
-        background-color: #c9d1de;
-        color: #002244;
-    }
+.day-btn:hover {
+  background-color: #c9d1de;
+  color: #002244;
+}
 
 /* Seçili gün için farklı renk */
 .selected-day {
-    background-color: #002244;
-    color: #ffffff;
-    font-weight: bold;
+  background-color: #002244;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 /* Boş gün mesajı */
 .no-session-text {
-    color: #6c757d;
-    font-size: 1.1rem;
-    font-weight: 500;
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
-
 
 /* Login Sayfası Arkaplan */
 body.login-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0; /* Hafif arkaplan rengi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f0f0f0; /* Hafif arkaplan rengi */
 }
 
 /* Login Kutu Tasarımı */
 .login-container {
-    width: 100%;
-    max-width: 380px;
-    background-color: #ffffff; /* Hafif kutu rengi */
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-    text-align: center;
-    color: #2e2e35; /* Ana yazı rengi */
+  width: 100%;
+  max-width: 380px;
+  background-color: #ffffff; /* Hafif kutu rengi */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+  text-align: center;
+  color: #2e2e35; /* Ana yazı rengi */
 }
 
 .login-title {
-    font-size: 1.6rem;
-    color: #003366; /* Başlık rengi */
-    margin-bottom: 1.5rem;
-    font-weight: 600;
+  font-size: 1.6rem;
+  color: #003366; /* Başlık rengi */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
 }
 
 .login-form .form-group {
-    margin-bottom: 1.2rem;
-    text-align: left;
+  margin-bottom: 1.2rem;
+  text-align: left;
 }
 
 .login-form label {
-    font-weight: 500;
-    color: #2e2e35; /* Label rengi */
+  font-weight: 500;
+  color: #2e2e35; /* Label rengi */
 }
 
 .login-form .form-control {
-    padding: 0.5rem;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    background-color: #f9f9f9; /* Hafif arka plan */
-    color: #2e2e35;
+  padding: 0.5rem;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  background-color: #f9f9f9; /* Hafif arka plan */
+  color: #2e2e35;
 }
 
 /* Göz simgesi stili */
 .password-group {
-    position: relative;
+  position: relative;
 }
 
 .password-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .toggle-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #888;
-    transition: color 0.3s ease;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888;
+  transition: color 0.3s ease;
 }
 
-    .toggle-password:hover {
-        color: #555;
-    }
+.toggle-password:hover {
+  color: #555;
+}
 
 /* Giriş Butonu */
 .login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #002855;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  background-color: #002855;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-    .login-btn:hover {
-        background-color: #001f4a;
-    }
+.login-btn:hover {
+  background-color: #001f4a;
+}
 
 /* Hata Mesajı */
 .error-message {
-    color: #ff6b6b;
-    font-size: 0.9rem;
-    margin-top: 1rem;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-top: 1rem;
 }
 
 .input-sm {
-    max-width: 360px; /* Genişliği biraz artırdık */
-    width: 100%; /* Küçük ekranlara göre ayarlanır */
-    padding: 9px 12px; /* Yükseklik hafifçe artırıldı */
-    box-sizing: border-box; /* İç kenar boşluklarını hesaba katar */
+  max-width: 360px; /* Genişliği biraz artırdık */
+  width: 100%; /* Küçük ekranlara göre ayarlanır */
+  padding: 9px 12px; /* Yükseklik hafifçe artırıldı */
+  box-sizing: border-box; /* İç kenar boşluklarını hesaba katar */
 }
 
 /* Select2 - Ana Çerçeve */
 .select2-container .select2-selection--single {
-    background-color: #f9f9f9;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    padding: 6px 12px;
-    height: calc(2.25rem + 2px);
-    transition: border-color 0.3s ease;
+  background-color: #f9f9f9;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  padding: 6px 12px;
+  height: calc(2.25rem + 2px);
+  transition: border-color 0.3s ease;
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #333;
-    font-weight: 500;
-    line-height: 1.5;
-    padding-left: 2px; /* Metnin kutuya daha iyi oturması için */
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: #333;
+  font-weight: 500;
+  line-height: 1.5;
+  padding-left: 2px; /* Metnin kutuya daha iyi oturması için */
 }
 
-.select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #888; /* Placeholder rengini biraz daha yumuşak hale getir */
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__placeholder {
+  color: #888; /* Placeholder rengini biraz daha yumuşak hale getir */
 }
 
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 100%;
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  height: 100%;
 }
 
-    .select2-container--default .select2-selection--single .select2-selection__arrow b {
-        border-color: #888 transparent transparent transparent;
-        border-width: 4px 4px 0 4px;
-    }
+.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  border-color: #888 transparent transparent transparent;
+  border-width: 4px 4px 0 4px;
+}
 
 /* Select2 - Açılır Menü */
 .select2-container--default .select2-results__options {
-    background-color: #fff;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    color: #333;
-    font-size: 0.95rem;
+  background-color: #fff;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  color: #333;
+  font-size: 0.95rem;
 }
 
 .select2-container--default .select2-results__option {
-    padding: 8px 12px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .select2-container--default .select2-results__option--highlighted {
-    background-color: #e2e6ea;
-    color: #333;
+  background-color: #e2e6ea;
+  color: #333;
 }
 
 /* Select2 - Arama Çubuğu */
 .select2-container--default .select2-search--dropdown .select2-search__field {
-    width: 100%;
-    padding: 6px 10px;
-    border: 1px solid #d9dee3;
-    border-radius: 6px;
-    background-color: #f9f9f9;
-    color: #333;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 6px 10px;
+  border: 1px solid #d9dee3;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  box-sizing: border-box;
 }
 
-    .select2-container--default .select2-search--dropdown .select2-search__field::placeholder {
-        color: #888;
-    }
-
-
+.select2-container--default
+  .select2-search--dropdown
+  .select2-search__field::placeholder {
+  color: #888;
+}

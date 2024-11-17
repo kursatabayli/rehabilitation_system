@@ -27,13 +27,13 @@ ob_start();
                 <div>
                     <table id="sessionsTable" class="table table-bordered">
                         <thead>
-                        <tr>
-                            <th>Personeller</th>
-                            <!-- Dinamik olarak saatler buraya ekleniyor -->
-                        </tr>
+                            <tr>
+                                <th>Personeller</th>
+                                <!-- Dinamik olarak saatler buraya ekleniyor -->
+                            </tr>
                         </thead>
                         <tbody>
-                        <!-- Dinamik seans bilgileri buraya eklenecek -->
+                            <!-- Dinamik seans bilgileri buraya eklenecek -->
                         </tbody>
                     </table>
                 </div>

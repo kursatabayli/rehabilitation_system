@@ -1,3 +1,3 @@
 <?php
-include_once __DIR__ . "/app/Helpers/Auth.php";
-checkAuth();
+header('Location: app/Views/Authenticate/Login.php');
+exit();
