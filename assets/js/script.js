@@ -154,26 +154,6 @@
     },
   });
 
-  // Resme tıklanınca modal aç
-  $("#viewImage").click(function (e) {
-    e.preventDefault(); // Link tıklamasını engelle
-
-    // SweetAlert ile resmi ve dinamik başlığı göster
-    var name = $(this).data("name");
-    var surname = $(this).data("surname");
-
-    Swal.fire({
-      title: name + " " + surname,
-      html:
-        '<img src="' + $(this).find("img").attr("src") + '" class="img-fluid">',
-      showCloseButton: true,
-      showConfirmButton: false,
-      width: "auto", // Modala göre otomatik genişlik
-      background: "#fff",
-      padding: "1rem",
-    });
-  });
-
   // Select2'yi dropdown'lar için etkinleştirme
   $("#staffId").select2({
     placeholder: "Personel arayın",
@@ -185,6 +165,8 @@
     allowClear: true,
   });
 
+  const today = new Date();
+  const dayOfWeek = today.getDay() === 0 ? 7 : today.getDay();
   // Gün seçildiğinde seans saatlerini ve seansları getir ve URL’yi güncelle
   const dayLinks = document.querySelectorAll('a[href^="?dayId"]');
   dayLinks.forEach((link) => {
@@ -193,7 +175,9 @@
       const dayId = new URL(this.href).searchParams.get("dayId");
 
       // Seçili gün vurgusu
-      dayLinks.forEach((l) => l.classList.remove("selected-day"));
+      dayLinks.forEach((dayOfWeek) =>
+        dayOfWeek.classList.remove("selected-day")
+      );
       this.classList.add("selected-day");
 
       // URL'yi güncelle (sayfa yeniden yüklenmeden)
@@ -206,75 +190,173 @@
 
   // Seans saatlerini ve seansları almak için AJAX fonksiyonu
   function fetchSessions(dayId) {
-    fetch(`../../Controllers/SessionController.php?dayId=${dayId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const tableHeadElement = document.querySelector("#sessionsTable thead");
-        const tableBodyElement = document.querySelector("#sessionsTable tbody");
-        const sessionsTable = document.getElementById("sessionsTable");
-        const noSessionsMessage = document.getElementById("noSessionsMessage");
+    if (document.getElementById("adminSessionsTable")) {
+      fetch(`../../Controllers/SessionController.php?dayId=${dayId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const tableHeadElement = document.querySelector(
+            "#adminSessionsTable thead"
+          );
+          const tableBodyElement = document.querySelector(
+            "#adminSessionsTable tbody"
+          );
+          const adminSessionsTable =
+            document.getElementById("adminSessionsTable");
+          const noSessionsMessage =
+            document.getElementById("noSessionsMessage");
 
-        tableHeadElement.innerHTML = "";
-        tableBodyElement.innerHTML = "";
-        sessionsTable.style.display = "none";
-        noSessionsMessage.style.display = "none";
+          tableHeadElement.innerHTML = "";
+          tableBodyElement.innerHTML = "";
+          adminSessionsTable.style.display = "none";
+          noSessionsMessage.style.display = "none";
 
-        if (data.length === 0) {
-          noSessionsMessage.style.display = "block";
-        } else {
-          sessionsTable.style.display = "table";
-          let tableHead = "<tr><th>Personeller</th>";
-          let tableBody = "";
+          if (data.length === 0) {
+            noSessionsMessage.style.display = "block";
+          } else {
+            adminSessionsTable.style.display = "table";
+            let tableHead = "<tr><th>Personeller</th>";
+            let tableBody = "";
+            const staffSessions = {};
+
+            data.forEach((item) => {
+              const startTime = item.time.sessionStartTime.substring(0, 5);
+              const endTime = item.time.sessionEndTime.substring(0, 5);
+              tableHead += `<th>${startTime} - ${endTime}</th>`;
+
+              item.sessions.forEach((session) => {
+                const staffName = `${session.staffName} ${session.staffSurname}`;
+                if (!staffSessions[staffName]) {
+                  staffSessions[staffName] = {};
+                }
+                const sessionContent = session.studentName
+                  ? `<a href="Update.php?sessionId=${session.sessionId}">${
+                      session.studentName
+                    } ${session.studentSurname}<br>${
+                      session.sessionType
+                        ? " (" + session.sessionType + ")"
+                        : ""
+                    }</a>`
+                  : "-";
+                staffSessions[staffName][`${startTime}-${endTime}`] =
+                  sessionContent;
+              });
+            });
+
+            tableHead += "</tr>";
+
+            Object.keys(staffSessions).forEach((staffName) => {
+              tableBody += `<tr><td>${staffName}</td>`;
+              data.forEach((item) => {
+                const startTime = item.time.sessionStartTime.substring(0, 5);
+                const endTime = item.time.sessionEndTime.substring(0, 5);
+                const session =
+                  staffSessions[staffName][`${startTime}-${endTime}`] || "-";
+                tableBody += `<td>${session}</td>`;
+              });
+              tableBody += "</tr>";
+            });
+
+            tableHeadElement.innerHTML = tableHead;
+            tableBodyElement.innerHTML = tableBody;
+          }
+        })
+        .catch((error) => {
+          console.error("Seanslar getirilemedi:", error);
+        });
+    } else {
+      fetch(`../../Controllers/SessionController.php?dayId=${dayId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          const tableHeadElement = document.querySelector(
+            "#staffSessionsTable thead"
+          );
+          const tableBodyElement = document.querySelector(
+            "#staffSessionsTable tbody"
+          );
+          const staffSessionsTable =
+            document.getElementById("staffSessionsTable");
+          const noSessionsMessage =
+            document.getElementById("noSessionsMessage");
+
+          // Başlangıç durumu
+          tableHeadElement.innerHTML = "";
+          tableBodyElement.innerHTML = "";
+          staffSessionsTable.style.display = "none";
+          noSessionsMessage.style.display = "none";
+
+          if (data.length === 0) {
+            noSessionsMessage.style.display = "block";
+            return;
+          }
+
+          staffSessionsTable.style.display = "table";
           const staffSessions = {};
+          let tableHead = "<tr>";
+          let tableBody = "";
 
           data.forEach((item) => {
             const startTime = item.time.sessionStartTime.substring(0, 5);
             const endTime = item.time.sessionEndTime.substring(0, 5);
+
+            // Tablo başlıkları
             tableHead += `<th>${startTime} - ${endTime}</th>`;
 
             item.sessions.forEach((session) => {
-              const staffName = `${session.staffName} ${session.staffSurname}`;
-              if (!staffSessions[staffName]) {
-                staffSessions[staffName] = {};
+              const staffId = `${session.staffId}`;
+              if (!staffSessions[staffId]) {
+                staffSessions[staffId] = {};
               }
+
               const sessionContent = session.studentName
-                ? `<a href="Update.php?sessionId=${session.sessionId}">${
+                ? `<a href="Detail.php?studentId=${session.studentId}">${
                     session.studentName
                   } ${session.studentSurname}<br>${
                     session.sessionType ? " (" + session.sessionType + ")" : ""
                   }</a>`
                 : "-";
-              staffSessions[staffName][`${startTime}-${endTime}`] =
+              staffSessions[staffId][`${startTime}-${endTime}`] =
                 sessionContent;
             });
           });
 
           tableHead += "</tr>";
 
-          Object.keys(staffSessions).forEach((staffName) => {
-            tableBody += `<tr><td>${staffName}</td>`;
-            data.forEach((item) => {
-              const startTime = item.time.sessionStartTime.substring(0, 5);
-              const endTime = item.time.sessionEndTime.substring(0, 5);
-              const session =
-                staffSessions[staffName][`${startTime}-${endTime}`] || "-";
-              tableBody += `<td>${session}</td>`;
-            });
-            tableBody += "</tr>";
+          const loggedInStaffId =
+            document.getElementById("loggedInStaffId").value;
+
+          // Kullanıcıya ait seansları ekleme
+          Object.keys(staffSessions).forEach((staffId) => {
+            if (staffId == loggedInStaffId) {
+              tableBody += "<tr>";
+              data.forEach((item) => {
+                const startTime = item.time.sessionStartTime.substring(0, 5);
+                const endTime = item.time.sessionEndTime.substring(0, 5);
+                const session =
+                  staffSessions[staffId][`${startTime}-${endTime}`] || "-";
+                tableBody += `<td>${session}</td>`;
+              });
+              tableBody += "</tr>";
+            }
           });
 
-          tableHeadElement.innerHTML = tableHead;
-          tableBodyElement.innerHTML = tableBody;
-        }
-      })
-      .catch((error) => {
-        console.error("Seanslar getirilemedi:", error);
-      });
+          // Güncellenmiş içeriği tabloya ekleme
+          if (tableBody.trim().length > 0) {
+            // tableBody boş değilse
+            tableHeadElement.innerHTML = tableHead;
+            tableBodyElement.innerHTML = tableBody;
+          } else {
+            noSessionsMessage.style.display = "block";
+          }
+        })
+        .catch((error) => {
+          console.error("Seanslar getirilemedi:", error);
+        });
+    }
   }
 
   // URL'deki dayId parametresine göre varsayılan gün belirleme
   const urlParams = new URLSearchParams(window.location.search);
-  const dayId = urlParams.get("dayId") || "1"; // Varsayılan: Pazartesi
+  const dayId = urlParams.get("dayId") || dayOfWeek; // Varsayılan: Pazartesi
   fetchSessions(dayId);
 
   // Seçili gün vurgusunu güncelle
@@ -339,3 +421,9 @@ function togglePassword(id) {
     toggleIcon.classList.add("fa-eye");
   }
 }
+
+// Başlık tıklanarak içeriğin açılıp kapanmasını sağlayan script
+document.querySelector(".toggle-title").addEventListener("click", function () {
+  const content = this.nextElementSibling; // Başlığın hemen altındaki .toggle-content
+  content.classList.toggle("active");
+});

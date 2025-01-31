@@ -1,27 +1,43 @@
 ﻿/* Genel Ayarlar */
 html,
 body {
+  width: 100%;
   height: 100%;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   font-family: "Roboto", sans-serif;
   background-color: #f0f0f0;
-}
-
-body {
   display: flex;
   color: #2e2e35;
+  overflow: auto; /* Kaydırma işlemi burada yapılır */
+}
+.main-container {
+  display: flex;
+  flex: 1; /* Kalan yüksekliği kapsaması için */
+}
+/* Main Content */
+.main-content {
+  width: 85%;
+  flex-grow: 1; /* Boş alanı kaplar */
+  min-height: 100%; /* Tarayıcı yüksekliği kadar uzatır */
+  background-color: #f3f6fa;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 200px;
+  flex-direction: column;
+  width: 15%; /* Genişlik yüzdeye göre ayarlanır */
+  min-height: 100%; /* Tarayıcı yüksekliği kadar uzatır */
+  max-width: 250px; /* Maksimum genişlik */
+  min-width: 200px; /* Minimum genişlik */
   background-color: #002855;
-  padding-top: 20px;
   color: #c9d1de;
+  box-sizing: border-box; /* İç boşlukları hesaba katar */
 }
 
 .sidebar a {
@@ -35,7 +51,25 @@ body {
   transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-/* Navbar - Siyah Ton */
+/* Page Content */
+.page-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Daha hafif bir gölge */
+  box-sizing: border-box;
+}
+
+.page-content .card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #003366;
+  margin-bottom: 1.5rem;
+}
+
+/* Navbar */
 .navbar {
   background-color: #111; /* Siyaha yakın koyu bir ton */
   color: #ffffff;
@@ -46,6 +80,21 @@ body {
   top: 0;
   right: 0;
   z-index: 1000;
+}
+
+/* Footer */
+footer {
+  background-color: #002244;
+  color: #c9d1de;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1000;
+  font-size: 0.85rem;
+  box-sizing: border-box;
 }
 
 .navbar h4 {
@@ -62,34 +111,6 @@ body {
 
 .navbar .nav-links a:hover {
   color: #c9d1de;
-}
-
-/* Main Content */
-.main-content {
-  margin-left: 200px;
-  width: calc(100% - 200px);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background-color: #f3f6fa;
-}
-
-/* Page Content */
-.page-content {
-  flex: 1;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  margin: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Daha hafif bir gölge */
-}
-
-/* Form Başlığı */
-.page-content .card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #003366;
-  margin-bottom: 1.5rem;
 }
 
 /* Form Alanları */
@@ -170,17 +191,6 @@ body {
   justify-content: flex-start;
 }
 
-/* Footer */
-footer {
-  padding: 10px;
-  text-align: center;
-  background-color: #002244;
-  color: #c9d1de;
-  font-size: 0.85rem;
-  bottom: 0;
-  right: 0;
-}
-
 /* Kart ve Diğer Stiller */
 .card {
   background-color: #ffffff;
@@ -239,11 +249,8 @@ footer {
 .minimalist-sidebar {
   background-color: #222;
   padding: 1rem;
-  width: 200px;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .minimalist-sidebar h4 {
@@ -280,7 +287,6 @@ footer {
 }
 
 .minimalist-sidebar .logout {
-  margin-top: auto;
   color: #ff6b6b;
 }
 
@@ -374,7 +380,7 @@ footer {
 }
 
 /* Minimalist Tablo Stili */
-#sessionsTable {
+#adminSessionsTable {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
@@ -384,29 +390,30 @@ footer {
   overflow: hidden;
 }
 
-#sessionsTable th,
-#sessionsTable td {
+#adminSessionsTable th,
+#adminSessionsTable td {
   padding: 12px;
   text-align: center;
   border-bottom: 1px solid #e9ecef; /* İnce çizgi ile hücre ayrımı */
 }
 
-#sessionsTable thead th {
+#adminSessionsTable thead th {
   background-color: #f3f6fa; /* Hafif gri tonlama */
   color: #003366; /* Ana renk tonunuza uyumlu başlık rengi */
   font-weight: 600;
+  text-align: center;
 }
 
-#sessionsTable tbody tr:nth-child(even) {
+#adminSessionsTable tbody tr:nth-child(even) {
   background-color: #fafbfc; /* Zebra çizgili */
 }
 
-#sessionsTable tbody tr:hover {
+#adminSessionsTable tbody tr:hover {
   background-color: #f1f5f9; /* Hover durumunda hafif vurgulu */
 }
 
 /* Seans hücreleri için hover efekti */
-#sessionsTable tbody td a {
+#adminSessionsTable tbody td a {
   color: #007bff;
   text-decoration: none;
   font-weight: 500;
@@ -414,7 +421,7 @@ footer {
   position: relative;
 }
 
-#sessionsTable tbody td a:hover {
+#adminSessionsTable tbody td a:hover {
   color: transparent; /* Yazıları soluklaştırmak için */
   display: flex;
   align-items: center;
@@ -422,7 +429,7 @@ footer {
 }
 
 /* "Düzenle" metni hover durumunda görünür hale geliyor */
-#sessionsTable tbody td a:hover::after {
+#adminSessionsTable tbody td a:hover::after {
   content: "Düzenle";
   position: absolute;
   top: 0;
@@ -438,15 +445,84 @@ footer {
   opacity: 1;
 }
 
-#sessionsTable tbody td:empty {
+#adminSessionsTable tbody td:empty {
   color: #c9d1de; /* Boş hücreler için açık renk */
   font-style: italic;
 }
+/* Minimalist Tablo Stili */
+#staffSessionsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
 
+#staffSessionsTable th,
+#staffSessionsTable td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e9ecef; /* İnce çizgi ile hücre ayrımı */
+}
+
+#staffSessionsTable thead th {
+  background-color: #f3f6fa; /* Hafif gri tonlama */
+  color: #003366; /* Ana renk tonunuza uyumlu başlık rengi */
+  font-weight: 600;
+  text-align: center;
+}
+
+#staffSessionsTable tbody tr:nth-child(even) {
+  background-color: #fafbfc; /* Zebra çizgili */
+}
+
+#staffSessionsTable tbody tr:hover {
+  background-color: #f1f5f9; /* Hover durumunda hafif vurgulu */
+}
+
+/* Seans hücreleri için hover efekti */
+#staffSessionsTable tbody td a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
+
+#staffSessionsTable tbody td a:hover {
+  color: transparent; /* Yazıları soluklaştırmak için */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* "Düzenle" metni hover durumunda görünür hale geliyor */
+#staffSessionsTable tbody td a:hover::after {
+  content: "Görüntüle";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #0056b3; /* Daha belirgin renk */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px; /* Kenarları yumuşatma */
+  opacity: 1;
+}
+
+#staffSessionsTable tbody td:empty {
+  color: #c9d1de; /* Boş hücreler için açık renk */
+  font-style: italic;
+}
 #noSessionsMessage {
   display: none;
   text-align: center;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 /* Gün seçici menü */
@@ -660,4 +736,46 @@ body.login-page {
   .select2-search--dropdown
   .select2-search__field::placeholder {
   color: #888;
+}
+
+/* Başlangıçta içerik gizlenir */
+.toggle-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-out, opacity 1s ease-out; /* Yumuşak geçiş */
+}
+
+/* İçerik aktif olduğunda açılır */
+.toggle-content.active {
+  max-height: none; /* İçeriğin yüksekliği sınırlandırılmaz */
+  opacity: 1;
+  overflow: visible; /* İçerik taşarsa görülebilir */
+  transition: max-height 1s ease-in, opacity 1s ease-in;
+}
+
+/* Başlık kısmı */
+.toggle-title {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tıklanabilir başlık için */
+.clickable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.clickable-header {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
 }
